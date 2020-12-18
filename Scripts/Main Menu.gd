@@ -5,7 +5,7 @@ onready var options_menu = get_node("HBoxContainer/VBoxContainer/Options/PopupMe
 onready var credits = get_node("HBoxContainer/VBoxContainer/Credits/Sprite");
 
 func _on_Continue_pressed():
-	get_tree().change_scene("res://Scenes/Level Select.tscn");
+	Global.goto_scene("res://Scenes/Level Select.tscn");
 
 func _on_New_Game_pressed():
 	save_menu.popup_centered();

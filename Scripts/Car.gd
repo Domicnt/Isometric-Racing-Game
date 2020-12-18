@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-onready var sprite = get_node("../CarSprite");
+onready var sprite = get_node("../");
 
 var wheel_base = 16
 var steering_angle = deg2rad(15)
