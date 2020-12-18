@@ -49,7 +49,7 @@ visible = false
 position = Vector2( 0.9375, 0.1875 )
 polygon = PoolVector2Array( -5.875, -7.25, -15.9375, -2.25, 4, 7.75, 13.875, 2.875 )
 
-[node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
+[node name="Camera2D" type="Camera2D" parent="."]
 visible = false
 current = true
 zoom = Vector2( 0.5, 0.5 )
