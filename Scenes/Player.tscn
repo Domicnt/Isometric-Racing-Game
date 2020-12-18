@@ -35,7 +35,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="CarSprite" type="AnimatedSprite"]
+[node name="Car" type="AnimatedSprite"]
 z_index = 1
 frames = SubResource( 1 )
 animation = "left_up"
