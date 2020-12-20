@@ -1,51 +1,25 @@
 extends KinematicBody2D
 
+var velocity = Vector2()
+var angular_momentum = 0;
+
+const acceleration = Vector2(0,-5)
+const reverse_acceleration = Vector2(0, -3);
+
+const braking = 2;
+const friction = .9;
+
+const wheelDriftResistance = 5;
+const maxSpeed = 500;
+const max_wheel_angle = .00025;
+const minWDrResStr = 0.05;
+var car_angle = 0;
 
 onready var sprite = get_node("../");
 
-var wheel_base = 16
-var steering_angle = deg2rad(15)
-var steering_angle_slow = deg2rad(15)
-var engine_power = 300
-var braking = -250
-var max_speed = 650
-var max_speed_reverse = 250
-var friction = -0.8
-var drag = -0.001
-var traction_fast = 0.01
-var traction_slow = 0.05
-var slip_speed = 400
-
-var velocity = Vector2.ZERO
-var acceleration = Vector2.ZERO
-var steer_angle
-
-func get_input():
-	var turn = 0
-	if Input.is_action_pressed("right"):
-		turn += 1
-	if Input.is_action_pressed("left"):
-		turn -= 1
-	steer_angle = turn * steering_angle
-	if velocity.length() < slip_speed:
-		steer_angle = turn * steering_angle_slow
-	if Input.is_action_pressed("forwards"):
-		acceleration = transform.x * engine_power
-	if Input.is_action_pressed("backwards"):
-		acceleration = transform.x * braking
-
-func _physics_process(delta):
-	acceleration = Vector2.ZERO
-	get_input();
-	apply_friction()
-	calculate_steering(delta)
-	velocity += acceleration * delta
-	velocity = move_and_slide(velocity)
-	change_sprite();
-	
 func change_sprite():
 	sprite.position = position;
-	var angle = ceil(fmod(rotation_degrees + 180 + 22.5, 360) / 45);
+	var angle = ceil(fmod(car_angle*180/PI + 90 + 22.5, 360) / 45);
 	match angle:
 		1.0:
 			sprite.animation = "left";
@@ -69,31 +43,50 @@ func change_sprite():
 		8.0:
 			sprite.animation = "left_down";
 			sprite.flip_h = false;
+
+func turn_car(wheel_angle):
+	angular_momentum += velocity.length() * wheel_angle;
+	car_angle += angular_momentum;
+	angular_momentum *= friction;
+
+func _physics_process(_delta):
+	var res = friction;
 	
-func apply_friction():
-	var f = velocity * friction
-	var d = velocity * velocity.length() * drag
-	if velocity.length() < 100:
-		f *= 3
-	if velocity.length() < 5:
-		velocity = Vector2.ZERO
-	acceleration += d + f
-
-func calculate_steering(delta):
-	var rear_wheel = position - transform.x * wheel_base / 2.0
-	var front_wheel = position + transform.x * wheel_base / 2.0
-	rear_wheel += velocity * delta
-	front_wheel += velocity.rotated(steer_angle) * delta
-	var new_heading = (front_wheel - rear_wheel).normalized()
-
-	var traction = traction_slow
-	if velocity.length() > slip_speed:
-		traction = traction_fast
-	var d = new_heading.dot(velocity.normalized())
-#	if d > 0.1 and d < 1 and velocity.length() > slip_speed:
-#		$SkidLeft.emitting = true
-	if d > 0:
-		velocity = velocity.linear_interpolate(new_heading * velocity.length(), traction)
-	elif d < 0:
-		velocity = -new_heading * min(velocity.length(), max_speed_reverse)
-	rotation = new_heading.angle()
+	#change angle of wheels, which later affect rotation
+	var wheel_angle = 0;
+	if Input.is_action_pressed('left'):
+		wheel_angle -= max_wheel_angle;
+	if Input.is_action_pressed('right'):
+		wheel_angle += max_wheel_angle;
+	
+	#direct acceleration/deceleration
+	if Input.is_action_pressed('forwards'):
+		velocity += acceleration.rotated(car_angle);
+	if Input.is_action_pressed("backwards"):
+		velocity -= reverse_acceleration.rotated(car_angle);
+	if Input.is_action_pressed("brake"):
+		res += braking
+		
+	if velocity.length() > res:
+		# angle between where car is facing and where it's moving
+		var angle = velocity.angle()-(car_angle+PI/2)
+		# strength of wheel resistance to drift, strongest if drift perpendicular to car facing
+		var wDrResStr = sin(angle)
+		if abs(wDrResStr) > minWDrResStr:
+			velocity += Vector2(wDrResStr*wheelDriftResistance,0).rotated(car_angle)
+		else: # if angle difference in minimal, then we discard
+		# drift portion of velocity and leave the other making car move where it faces
+			velocity *= abs(cos(angle))
+		# applying traction and braking, if we brake
+		velocity -= velocity.normalized() * res
+		
+		# limiting velocity to maxSpeed
+		if velocity.length() > maxSpeed:
+			velocity = velocity / velocity.length() * maxSpeed;
+	else:
+		velocity = Vector2()
+	# let's not forget to save remainder of velocity, so it can be processed in future frames,
+	# if we don't do it, then we will not be able to slide/drift and accelerate more
+	velocity = move_and_slide(velocity);
+	turn_car(wheel_angle);
+	change_sprite();
