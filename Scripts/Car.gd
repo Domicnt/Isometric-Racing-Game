@@ -1,25 +1,16 @@
-extends KinematicBody2D
+extends RigidBody2D
 
-var velocity = Vector2()
-var angular_momentum = 0;
+const engine_power = 500;
+const reverse_engine_power = 300;
+const braking_force = 1;
+const max_wheel_angle = 8;
 
-const acceleration = Vector2(0,-5)
-const reverse_acceleration = Vector2(0, -3);
-
-const braking = 2;
-const friction = .9;
-
-const wheelDriftResistance = 5;
-const maxSpeed = 500;
-const max_wheel_angle = .00025;
-const minWDrResStr = 0.05;
-var car_angle = 0;
+const traction = .9;
 
 onready var sprite = get_node("../");
-
 func change_sprite():
 	sprite.position = position;
-	var angle = ceil(fmod(car_angle*180/PI + 90 + 22.5, 360) / 45);
+	var angle = ceil(fposmod(rotation*180/PI + 180 + 22.5, 360) / 45);
 	match angle:
 		1.0:
 			sprite.animation = "left";
@@ -44,49 +35,58 @@ func change_sprite():
 			sprite.animation = "left_down";
 			sprite.flip_h = false;
 
-func turn_car(wheel_angle):
-	angular_momentum += velocity.length() * wheel_angle;
-	car_angle += angular_momentum;
-	angular_momentum *= friction;
-
-func _physics_process(_delta):
-	var res = friction;
-	
-	#change angle of wheels, which later affect rotation
+func steer():
+	#turning the front wheel
 	var wheel_angle = 0;
 	if Input.is_action_pressed('left'):
 		wheel_angle -= max_wheel_angle;
 	if Input.is_action_pressed('right'):
 		wheel_angle += max_wheel_angle;
 	
-	#direct acceleration/deceleration
-	if Input.is_action_pressed('forwards'):
-		velocity += acceleration.rotated(car_angle);
-	if Input.is_action_pressed("backwards"):
-		velocity -= reverse_acceleration.rotated(car_angle);
-	if Input.is_action_pressed("brake"):
-		res += braking
-		
-	if velocity.length() > res:
-		# angle between where car is facing and where it's moving
-		var angle = velocity.angle()-(car_angle+PI/2)
-		# strength of wheel resistance to drift, strongest if drift perpendicular to car facing
-		var wDrResStr = sin(angle)
-		if abs(wDrResStr) > minWDrResStr:
-			velocity += Vector2(wDrResStr*wheelDriftResistance,0).rotated(car_angle)
-		else: # if angle difference in minimal, then we discard
-		# drift portion of velocity and leave the other making car move where it faces
-			velocity *= abs(cos(angle))
-		# applying traction and braking, if we brake
-		velocity -= velocity.normalized() * res
-		
-		# limiting velocity to maxSpeed
-		if velocity.length() > maxSpeed:
-			velocity = velocity / velocity.length() * maxSpeed;
+	#check if the car is moving forwards or backwards, then turn based on wheel angle
+	if linear_velocity.normalized().dot(Vector2(cos(rotation), sin(rotation))) > 0:
+		add_torque(wheel_angle * linear_velocity.length());
 	else:
-		velocity = Vector2()
-	# let's not forget to save remainder of velocity, so it can be processed in future frames,
-	# if we don't do it, then we will not be able to slide/drift and accelerate more
-	velocity = move_and_slide(velocity);
-	turn_car(wheel_angle);
+		add_torque(-wheel_angle * linear_velocity.length());
+
+func apply_forces():
+	#reset active forces
+	applied_force = Vector2(0, 0);
+	applied_torque = 0;
+	
+	#drag
+	linear_velocity *= .99;
+	angular_velocity *= .9;
+	
+	#amount that the wheels slip, more if accelerating / braking, etc
+	var slip = traction;
+	
+	#apply engine force at the rear wheel if accelerating
+	if Input.is_action_pressed('forwards'):
+		add_central_force(transform.x * engine_power);
+		#add_force(back_wheel, transform.x * engine_power);
+		slip *= 2;
+	if Input.is_action_pressed("backwards"):
+		add_central_force(transform.x * -reverse_engine_power);
+		#add_force(back_wheel, transform.x * -reverse_engine_power);
+		slip *= 2;
+	
+	# slow car and increase slipping if braking
+	if Input.is_action_pressed('brake'):
+		slip *= 2;
+		add_central_force(-linear_velocity * braking_force);
+	
+	var diff = fposmod(rotation - linear_velocity.angle(), TAU);
+	if Input.is_action_pressed('print'):
+		print(diff);
+	diff = (PI - abs(diff - PI)) / PI;
+	
+	add_central_force(-linear_velocity * diff * slip * 1.5);
+
+func _ready():
+	gravity_scale = 0;
+
+func _physics_process(_delta):
+	apply_forces();
+	steer();
 	change_sprite();
