@@ -1,15 +1,15 @@
 extends RigidBody2D
 
-const engine_power = 500;
-const reverse_engine_power = 300;
+const engine_power = 250;
+const reverse_engine_power = 150;
 const braking_force = 1;
-const max_wheel_angle = 8;
+const max_wheel_angle = 6;
 
 const traction = .9;
 
-onready var sprite = get_node("../");
+onready var sprite = get_node("Car");
 func change_sprite():
-	sprite.position = position;
+	sprite.rotation = -rotation;
 	var angle = ceil(fposmod(rotation*180/PI + 180 + 22.5, 360) / 45);
 	match angle:
 		1.0:
@@ -55,8 +55,8 @@ func apply_forces():
 	applied_torque = 0;
 	
 	#drag
-	linear_velocity *= .99;
-	angular_velocity *= .9;
+	linear_velocity *= .995;
+	angular_velocity *= .95;
 	
 	#amount that the wheels slip, more if accelerating / braking, etc
 	var slip = traction;
