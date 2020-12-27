@@ -4,13 +4,12 @@
 [ext_resource path="res://Sprites/Level Select/Win Flag.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Level Select/Second Flag.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Level Select/Third Flag.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Level Select/world.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/Level Select.gd" type="Script" id=6]
 [ext_resource path="res://Sprites/Level Select/flag.png" type="Texture" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 50.0
-
-[sub_resource type="CircleShape2D" id=3]
+radius = 24.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -19,14 +18,14 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "Third",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "First",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Third",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
@@ -41,19 +40,14 @@ animations = [ {
 
 [node name="Car" parent="YSort" instance=ExtResource( 1 )]
 
-[node name="Area2D" type="Area2D" parent="YSort/Car"]
-script = ExtResource( 6 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Car/Area2D"]
-shape = SubResource( 1 )
-
 [node name="Levels" type="Node2D" parent="YSort"]
+script = ExtResource( 6 )
 
 [node name="1" type="Area2D" parent="YSort/Levels"]
 position = Vector2( 200, -100 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Levels/1"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Levels/1"]
 frames = SubResource( 2 )
@@ -62,5 +56,7 @@ offset = Vector2( 0, -32 )
 [node name="PopupMenu" type="PopupMenu" parent="YSort/Levels/1/AnimatedSprite"]
 margin_right = 20.0
 margin_bottom = 20.0
-[connection signal="area_entered" from="YSort/Car/Area2D" to="YSort/Car/Area2D" method="_on_Area2D_area_entered"]
-[connection signal="area_exited" from="YSort/Car/Area2D" to="YSort/Car/Area2D" method="_on_Area2D_area_exited"]
+
+[node name="world" type="Sprite" parent="YSort"]
+z_index = -10
+texture = ExtResource( 5 )

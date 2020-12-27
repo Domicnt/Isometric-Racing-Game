@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/track-piece.png-d97012698b0701385e21df25513dbc69.stex"
+path="res://.import/checkpoint.png-1f4e17e7bbe9e4f98e39f4d6840c3a49.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Track/track-piece.png"
-dest_files=[ "res://.import/track-piece.png-d97012698b0701385e21df25513dbc69.stex" ]
+source_file="res://Sprites/Track/checkpoint.png"
+dest_files=[ "res://.import/checkpoint.png-1f4e17e7bbe9e4f98e39f4d6840c3a49.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

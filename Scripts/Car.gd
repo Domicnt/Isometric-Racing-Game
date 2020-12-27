@@ -1,9 +1,9 @@
 extends RigidBody2D
 
-const engine_power = 250;
+const engine_power = 200;
 const reverse_engine_power = 150;
-const braking_force = 1;
-const max_wheel_angle = 6;
+const braking_force = .5;
+const max_wheel_angle = 5;
 
 const traction = .9;
 
@@ -85,6 +85,7 @@ func apply_forces():
 
 func _ready():
 	gravity_scale = 0;
+	friction = 0;
 
 func _physics_process(_delta):
 	apply_forces();

@@ -1,12 +1,74 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/World.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/start.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/Level Select/Win Flag.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/checkpoint.tscn" type="PackedScene" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Car" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, -64 )
+position = Vector2( 0, -192 )
 
 [node name="TileMap" parent="." instance=ExtResource( 2 )]
-tile_data = PoolIntArray( -131073, 6, 0, -65537, 5, 0, -1, 5, 0 )
+tile_data = PoolIntArray( -131075, 5, 0, -131074, 1, 0, -131073, 2, 0, -65539, 3, 0, -65538, 2, 0, -65537, 4, 0, -2, 4, 0, -1, 4, 0, 65534, 4, 0, 65535, 3, 0, 0, 1, 0, 1, 2, 0, 131070, 4, 0, 65537, 4, 0, 196606, 3, 0, 196607, 1, 0, 131072, 1, 0, 131073, 0, 0 )
+
+[node name="Sprite" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, -192 )
+
+[node name="Sprite" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( 481.629, -236.652 )
+
+[node name="Sprite2" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( -101.019, -332.869 )
+
+[node name="Sprite3" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( -1059.52, 140.435 )
+
+[node name="Sprite4" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( -189.021, 863.473 )
+
+[node name="Sprite5" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( -1061.9, 623.253 )
+scale = Vector2( -1, 1 )
+
+[node name="Sprite6" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( 286.663, -625.414 )
+scale = Vector2( -1, 1 )
+
+[node name="PopupPanel" type="PopupPanel" parent="Sprite"]
+margin_top = -1.52588e-05
+margin_right = 8.0
+margin_bottom = 12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite/PopupPanel"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 4.0
+margin_bottom = 8.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Sprite/PopupPanel/VBoxContainer"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Sprite/PopupPanel/VBoxContainer/HBoxContainer"]
+z_index = 10
+frames = SubResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite/PopupPanel/VBoxContainer/HBoxContainer"]
+text = "Default Text"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite/PopupPanel/VBoxContainer"]
+margin_top = 4.0
+margin_bottom = 4.0
+text = "Default Text"
