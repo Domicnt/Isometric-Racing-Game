@@ -107,7 +107,6 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/New Game/MarginContainer2"]
 margin_right = 232.0
 margin_bottom = 40.0
-custom_fonts/mono_font = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true

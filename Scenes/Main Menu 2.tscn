@@ -34,19 +34,19 @@ tab_align = 0
 [node name="Events" type="MarginContainer" parent="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 26.0
-margin_top = 86.0
-margin_right = -26.0
-margin_bottom = -26.0
+margin_left = 4.0
+margin_top = 66.0
+margin_right = -4.0
+margin_bottom = -4.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Events"]
-margin_right = 1828.0
-margin_bottom = 888.0
+margin_right = 1872.0
+margin_bottom = 930.0
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer"]
 margin_right = 3150.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 26
@@ -56,18 +56,18 @@ __meta__ = {
 
 [node name="1" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer"]
 margin_right = 768.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1"]
 margin_right = 768.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1"]
 margin_right = 768.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -97,7 +97,7 @@ stretch_mode = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer"]
 margin_top = 489.0
 margin_right = 768.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -232,18 +232,18 @@ __meta__ = {
 [node name="2" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer"]
 margin_left = 794.0
 margin_right = 1562.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="TabContainer/Events/ScrollContainer/HBoxContainer/2"]
 margin_right = 768.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer/2"]
 margin_right = 768.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -273,7 +273,7 @@ stretch_mode = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer/2/VBoxContainer"]
 margin_top = 489.0
 margin_right = 768.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -405,18 +405,18 @@ __meta__ = {
 [node name="3" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer"]
 margin_left = 1588.0
 margin_right = 2356.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="TabContainer/Events/ScrollContainer/HBoxContainer/3"]
 margin_right = 768.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer/3"]
 margin_right = 768.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -446,7 +446,7 @@ stretch_mode = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer/3/VBoxContainer"]
 margin_top = 489.0
 margin_right = 768.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -578,18 +578,18 @@ __meta__ = {
 [node name="4" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer"]
 margin_left = 2382.0
 margin_right = 3150.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="TabContainer/Events/ScrollContainer/HBoxContainer/4"]
 margin_right = 768.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer/4"]
 margin_right = 768.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -619,7 +619,7 @@ stretch_mode = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer/4/VBoxContainer"]
 margin_top = 489.0
 margin_right = 768.0
-margin_bottom = 876.0
+margin_bottom = 918.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -768,6 +768,6 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 58.0
+margin_top = 66.0
 margin_right = -4.0
 margin_bottom = -4.0
