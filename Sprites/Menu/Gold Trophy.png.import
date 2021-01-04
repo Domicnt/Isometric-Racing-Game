@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.png-4509d642fae2cb939b611565ef31b4b9.stex"
+path="res://.import/Gold Trophy.png-2d8538915e60b7a866a368ca9ed63c4f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Menu/background.png"
-dest_files=[ "res://.import/background.png-4509d642fae2cb939b611565ef31b4b9.stex" ]
+source_file="res://Sprites/Menu/Gold Trophy.png"
+dest_files=[ "res://.import/Gold Trophy.png-2d8538915e60b7a866a368ca9ed63c4f.stex" ]
 
 [params]
 

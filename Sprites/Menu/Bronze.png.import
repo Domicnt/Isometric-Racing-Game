@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.png-4509d642fae2cb939b611565ef31b4b9.stex"
+path="res://.import/Bronze.png-040a32f28a9c3429c715eb3841034202.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Menu/background.png"
-dest_files=[ "res://.import/background.png-4509d642fae2cb939b611565ef31b4b9.stex" ]
+source_file="res://Sprites/Menu/Bronze.png"
+dest_files=[ "res://.import/Bronze.png-040a32f28a9c3429c715eb3841034202.stex" ]
 
 [params]
 

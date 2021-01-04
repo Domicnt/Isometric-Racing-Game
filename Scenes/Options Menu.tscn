@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ostrich-regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Sprites/Track/1-2.png" type="Texture" id=2]
@@ -7,50 +7,53 @@
 [ext_resource path="res://Sprites/Menu/checkbox.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/Menu/checked checkbox.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/Menu/slider.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/Options.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-size = 128
+size = 64
 outline_size = 1
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 64
+size = 48
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 64
+size = 48
 font_data = ExtResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer"]
-margin_left = 20.0
-margin_top = 40.0
-margin_right = 1900.0
-margin_bottom = 1040.0
+margin_left = 8.0
+margin_top = 15.0
+margin_right = 888.0
+margin_bottom = 487.0
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 1880.0
-margin_bottom = 1000.0
+margin_right = 880.0
+margin_bottom = 472.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 768.0
-margin_bottom = 1000.0
+margin_right = 400.0
+margin_bottom = 472.0
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
-margin_right = 768.0
-margin_bottom = 346.0
+margin_right = 400.0
+margin_bottom = 234.0
+rect_min_size = Vector2( 400, 0 )
 
 [node name="Panel" type="Panel" parent="HBoxContainer/VBoxContainer/MarginContainer"]
-margin_right = 768.0
-margin_bottom = 346.0
+margin_right = 400.0
+margin_bottom = 234.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer"]
-margin_right = 768.0
-margin_bottom = 346.0
+margin_right = 400.0
+margin_bottom = 234.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -58,8 +61,8 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_right = 768.0
-margin_bottom = 129.0
+margin_right = 400.0
+margin_bottom = 65.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 1 )
@@ -69,13 +72,13 @@ text = "Display"
 fit_content_height = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 133.0
-margin_right = 768.0
-margin_bottom = 203.0
+margin_top = 69.0
+margin_right = 400.0
+margin_bottom = 123.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 561.0
-margin_bottom = 70.0
+margin_right = 235.0
+margin_bottom = 54.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 2 )
@@ -83,22 +86,22 @@ text = "Resolution"
 fit_content_height = true
 scroll_active = false
 
-[node name="OptionButton" type="OptionButton" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 565.0
-margin_right = 768.0
-margin_bottom = 70.0
+[node name="Resolution" type="OptionButton" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 239.0
+margin_right = 400.0
+margin_bottom = 54.0
 custom_fonts/font = SubResource( 3 )
 text = "1920x1080"
 align = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 207.0
-margin_right = 768.0
-margin_bottom = 277.0
+margin_top = 127.0
+margin_right = 400.0
+margin_bottom = 181.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_right = 533.0
-margin_bottom = 70.0
+margin_right = 217.0
+margin_bottom = 54.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 2 )
@@ -106,22 +109,22 @@ text = "Display Mode"
 fit_content_height = true
 scroll_active = false
 
-[node name="OptionButton" type="OptionButton" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 537.0
-margin_right = 768.0
-margin_bottom = 70.0
+[node name="DisplayMode" type="OptionButton" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 221.0
+margin_right = 400.0
+margin_bottom = 54.0
 custom_fonts/font = SubResource( 3 )
 text = "Windowed"
 align = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 281.0
-margin_right = 768.0
-margin_bottom = 346.0
+margin_top = 185.0
+margin_right = 400.0
+margin_bottom = 234.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
-margin_right = 382.0
-margin_bottom = 65.0
+margin_right = 198.0
+margin_bottom = 49.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 2 )
@@ -130,10 +133,9 @@ fit_content_height = true
 scroll_active = false
 
 [node name="TextureButton" type="TextureButton" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
-margin_left = 720.0
-margin_top = 8.0
-margin_right = 768.0
-margin_bottom = 56.0
+margin_left = 352.0
+margin_right = 400.0
+margin_bottom = 48.0
 size_flags_horizontal = 10
 size_flags_vertical = 6
 toggle_mode = true
@@ -142,20 +144,20 @@ texture_pressed = ExtResource( 6 )
 stretch_mode = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 350.0
-margin_right = 768.0
-margin_bottom = 1000.0
+margin_top = 238.0
+margin_right = 400.0
+margin_bottom = 472.0
 size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="HBoxContainer/VBoxContainer/MarginContainer2"]
-margin_right = 768.0
-margin_bottom = 650.0
+margin_right = 400.0
+margin_bottom = 234.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer2"]
-margin_right = 768.0
-margin_bottom = 650.0
+margin_right = 400.0
+margin_bottom = 234.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -163,10 +165,9 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
-margin_right = 768.0
-margin_bottom = 193.0
+margin_right = 400.0
+margin_bottom = 65.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center]Audio[/center]"
@@ -174,13 +175,14 @@ text = "Audio"
 fit_content_height = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
-margin_top = 197.0
-margin_right = 768.0
-margin_bottom = 262.0
+margin_top = 69.0
+margin_right = 400.0
+margin_bottom = 167.0
+custom_constants/separation = 10
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
-margin_right = 382.0
-margin_bottom = 65.0
+margin_right = 134.0
+margin_bottom = 98.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 2 )
@@ -189,36 +191,31 @@ fit_content_height = true
 scroll_active = false
 
 [node name="HSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
-margin_left = 386.0
-margin_right = 768.0
-margin_bottom = 65.0
+margin_left = 144.0
+margin_right = 400.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 256, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_icons/grabber_highlight = ExtResource( 7 )
 custom_icons/grabber = ExtResource( 7 )
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
-margin_top = 266.0
-margin_right = 768.0
-margin_bottom = 650.0
-texture = ExtResource( 2 )
-
 [node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer"]
-margin_left = 772.0
-margin_right = 1880.0
-margin_bottom = 1000.0
+margin_left = 404.0
+margin_right = 880.0
+margin_bottom = 472.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="HBoxContainer/MarginContainer3"]
-margin_right = 1108.0
-margin_bottom = 1000.0
+margin_right = 476.0
+margin_bottom = 472.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer3"]
-margin_right = 1108.0
-margin_bottom = 474.0
+margin_right = 476.0
+margin_bottom = 330.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
 __meta__ = {
@@ -226,8 +223,8 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/VBoxContainer"]
-margin_right = 1108.0
-margin_bottom = 129.0
+margin_right = 476.0
+margin_bottom = 65.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 1 )
@@ -237,13 +234,13 @@ text = "Key Bindings"
 fit_content_height = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer"]
-margin_top = 133.0
-margin_right = 1108.0
-margin_bottom = 198.0
+margin_top = 69.0
+margin_right = 476.0
+margin_bottom = 118.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer"]
-margin_right = 848.0
-margin_bottom = 65.0
+margin_right = 280.0
+margin_bottom = 49.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 2 )
@@ -251,25 +248,25 @@ text = "Forwards"
 fit_content_height = true
 scroll_active = false
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer"]
-margin_left = 852.0
-margin_right = 1108.0
-margin_bottom = 65.0
+[node name="Forwards" type="TextureButton" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer"]
+margin_left = 284.0
+margin_right = 476.0
+margin_bottom = 49.0
 size_flags_horizontal = 9
 texture_normal = ExtResource( 4 )
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer/TextureButton"]
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 244.0
-margin_bottom = 52.0
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer/Forwards"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 182.0
+margin_bottom = 43.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer/TextureButton/MarginContainer"]
-margin_right = 232.0
-margin_bottom = 49.0
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer/Forwards/MarginContainer"]
+margin_right = 172.0
+margin_bottom = 33.0
 custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
@@ -279,13 +276,13 @@ fit_content_height = true
 scroll_active = false
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer"]
-margin_top = 202.0
-margin_right = 1108.0
-margin_bottom = 267.0
+margin_top = 122.0
+margin_right = 476.0
+margin_bottom = 171.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer2"]
-margin_right = 848.0
-margin_bottom = 65.0
+margin_right = 280.0
+margin_bottom = 49.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 2 )
@@ -293,25 +290,25 @@ text = "Backwards"
 fit_content_height = true
 scroll_active = false
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer2"]
-margin_left = 852.0
-margin_right = 1108.0
-margin_bottom = 65.0
+[node name="Backwards" type="TextureButton" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer2"]
+margin_left = 284.0
+margin_right = 476.0
+margin_bottom = 49.0
 size_flags_horizontal = 9
 texture_normal = ExtResource( 4 )
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer2/TextureButton"]
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 244.0
-margin_bottom = 52.0
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer2/Backwards"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 182.0
+margin_bottom = 43.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer2/TextureButton/MarginContainer"]
-margin_right = 232.0
-margin_bottom = 49.0
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer2/Backwards/MarginContainer"]
+margin_right = 172.0
+margin_bottom = 33.0
 custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
@@ -321,13 +318,13 @@ fit_content_height = true
 scroll_active = false
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer"]
-margin_top = 271.0
-margin_right = 1108.0
-margin_bottom = 336.0
+margin_top = 175.0
+margin_right = 476.0
+margin_bottom = 224.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3"]
-margin_right = 848.0
-margin_bottom = 65.0
+margin_right = 280.0
+margin_bottom = 49.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 2 )
@@ -335,25 +332,25 @@ text = "Left"
 fit_content_height = true
 scroll_active = false
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3"]
-margin_left = 852.0
-margin_right = 1108.0
-margin_bottom = 65.0
+[node name="Left" type="TextureButton" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3"]
+margin_left = 284.0
+margin_right = 476.0
+margin_bottom = 49.0
 size_flags_horizontal = 9
 texture_normal = ExtResource( 4 )
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/TextureButton"]
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 244.0
-margin_bottom = 52.0
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/Left"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 182.0
+margin_bottom = 43.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/TextureButton/MarginContainer"]
-margin_right = 232.0
-margin_bottom = 49.0
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/Left/MarginContainer"]
+margin_right = 172.0
+margin_bottom = 33.0
 custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
@@ -363,13 +360,13 @@ fit_content_height = true
 scroll_active = false
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer"]
-margin_top = 340.0
-margin_right = 1108.0
-margin_bottom = 405.0
+margin_top = 228.0
+margin_right = 476.0
+margin_bottom = 277.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer4"]
-margin_right = 848.0
-margin_bottom = 65.0
+margin_right = 280.0
+margin_bottom = 49.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 2 )
@@ -377,25 +374,25 @@ text = "Right"
 fit_content_height = true
 scroll_active = false
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer4"]
-margin_left = 852.0
-margin_right = 1108.0
-margin_bottom = 65.0
+[node name="Right" type="TextureButton" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer4"]
+margin_left = 284.0
+margin_right = 476.0
+margin_bottom = 49.0
 size_flags_horizontal = 9
 texture_normal = ExtResource( 4 )
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer4/TextureButton"]
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 244.0
-margin_bottom = 52.0
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer4/Right"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 182.0
+margin_bottom = 43.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer4/TextureButton/MarginContainer"]
-margin_right = 232.0
-margin_bottom = 49.0
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer4/Right/MarginContainer"]
+margin_right = 172.0
+margin_bottom = 33.0
 custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
@@ -405,13 +402,13 @@ fit_content_height = true
 scroll_active = false
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer"]
-margin_top = 409.0
-margin_right = 1108.0
-margin_bottom = 474.0
+margin_top = 281.0
+margin_right = 476.0
+margin_bottom = 330.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer5"]
-margin_right = 848.0
-margin_bottom = 65.0
+margin_right = 280.0
+margin_bottom = 49.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 2 )
@@ -419,25 +416,25 @@ text = "Brake"
 fit_content_height = true
 scroll_active = false
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer5"]
-margin_left = 852.0
-margin_right = 1108.0
-margin_bottom = 65.0
+[node name="Brake" type="TextureButton" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer5"]
+margin_left = 284.0
+margin_right = 476.0
+margin_bottom = 49.0
 size_flags_horizontal = 9
 texture_normal = ExtResource( 4 )
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer5/TextureButton"]
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 244.0
-margin_bottom = 52.0
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer5/Brake"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 182.0
+margin_bottom = 43.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer5/TextureButton/MarginContainer"]
-margin_right = 232.0
-margin_bottom = 49.0
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer5/Brake/MarginContainer"]
+margin_right = 172.0
+margin_bottom = 33.0
 custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
@@ -452,3 +449,12 @@ margin_top = 1169.0
 margin_right = 1108.0
 margin_bottom = 1553.0
 texture = ExtResource( 2 )
+[connection signal="item_selected" from="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Resolution" to="." method="_on_Resolution_item_selected"]
+[connection signal="item_selected" from="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/DisplayMode" to="." method="_on_DisplayMode_item_selected"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/TextureButton" to="." method="_on_TextureButton_toggled"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer/Forwards" to="." method="_on_Forwards_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer2/Backwards" to="." method="_on_Backwards_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/Left" to="." method="_on_Left_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer4/Right" to="." method="_on_Right_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer5/Brake" to="." method="_on_Brake_pressed"]

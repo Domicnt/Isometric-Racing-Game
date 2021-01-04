@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/placeholder background.png-6aa07d1f03b838bbea76da2180a5766b.stex"
+path="res://.import/Silver.png-5a753270d24b63db81abc9e6c93a5006.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Menu/placeholder background.png"
-dest_files=[ "res://.import/placeholder background.png-6aa07d1f03b838bbea76da2180a5766b.stex" ]
+source_file="res://Sprites/Menu/Silver.png"
+dest_files=[ "res://.import/Silver.png-5a753270d24b63db81abc9e6c93a5006.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
