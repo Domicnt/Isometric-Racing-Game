@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Car.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Car/carRed2_012.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Sprites/Car/carRed2_007.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Car/carRed2_002.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/Car/carRed2_006.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Pause Menu.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 12.0
@@ -22,9 +23,9 @@ animations = [ {
 "name": "up",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "left_up",
+"name": "down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -32,9 +33,9 @@ animations = [ {
 "name": "left_down",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "down",
+"name": "left_up",
 "speed": 5.0
 } ]
 
@@ -66,3 +67,9 @@ smoothing_speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource( 7 )]
+pause_mode = 2
+anchor_bottom = 1.0

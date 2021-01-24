@@ -1,6 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://menufont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/Level Select.gd" type="Script" id=2]
 [ext_resource path="res://ostrich-regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Sprites/Menu/background.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Menu/Gold.png" type="Texture" id=5]
@@ -9,10 +10,6 @@
 [ext_resource path="res://Sprites/Level Select/track1.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-size = 96
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=2]
 size = 48
 font_data = ExtResource( 3 )
 
@@ -23,6 +20,7 @@ margin_left = 8.0
 margin_top = 16.0
 margin_right = -7.99994
 margin_bottom = -16.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -46,7 +44,7 @@ margin_right = 872.0
 margin_bottom = 418.0
 scroll_vertical_enabled = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer"]
+[node name="Levels" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer"]
 margin_right = 872.0
 margin_bottom = 418.0
 size_flags_horizontal = 3
@@ -56,17 +54,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="1" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer"]
+[node name="1" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/Levels"]
 margin_right = 320.0
 margin_bottom = 418.0
 size_flags_horizontal = 0
 size_flags_vertical = 3
 
-[node name="Panel" type="Panel" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1"]
+[node name="Panel" type="Panel" parent="TabContainer/Events/ScrollContainer/Levels/1"]
 margin_right = 320.0
 margin_bottom = 418.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/1"]
 margin_right = 320.0
 margin_bottom = 418.0
 size_flags_horizontal = 0
@@ -74,29 +72,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer"]
-visible = false
-margin_right = 400.0
-margin_bottom = 194.0
-size_flags_horizontal = 3
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "[center]Name of Track[/center]"
-text = "Name of Track"
-fit_content_height = true
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer"]
 margin_right = 320.0
 margin_bottom = 128.0
 size_flags_horizontal = 0
 texture = ExtResource( 8 )
 stretch_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer"]
 margin_top = 132.0
 margin_right = 320.0
 margin_bottom = 418.0
@@ -104,102 +87,102 @@ rect_min_size = Vector2( 320, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer/VBoxContainer"]
 margin_right = 320.0
 margin_bottom = 64.0
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer/VBoxContainer/HBoxContainer"]
 margin_right = 64.0
 margin_bottom = 64.0
 texture = ExtResource( 5 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer/VBoxContainer/HBoxContainer"]
 margin_left = 68.0
 margin_right = 192.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 text = "Gold"
 scroll_active = false
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer/VBoxContainer/HBoxContainer"]
 margin_left = 196.0
 margin_right = 320.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[right]1:30[/right]"
 text = "1:30"
 scroll_active = false
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer/VBoxContainer"]
 margin_top = 68.0
 margin_right = 320.0
 margin_bottom = 132.0
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer/VBoxContainer/HBoxContainer2"]
 margin_right = 64.0
 margin_bottom = 64.0
 texture = ExtResource( 6 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer/VBoxContainer/HBoxContainer2"]
 margin_left = 68.0
 margin_right = 192.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 text = "Silver"
 scroll_active = false
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer/VBoxContainer/HBoxContainer2"]
 margin_left = 196.0
 margin_right = 320.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[right]2:00[/right]"
 text = "2:00"
 scroll_active = false
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer/VBoxContainer"]
 margin_top = 136.0
 margin_right = 320.0
 margin_bottom = 200.0
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer/VBoxContainer/HBoxContainer3"]
 margin_right = 64.0
 margin_bottom = 64.0
 texture = ExtResource( 7 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer/VBoxContainer/HBoxContainer3"]
 margin_left = 68.0
 margin_right = 192.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 text = "Bronze"
 scroll_active = false
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer/VBoxContainer/HBoxContainer3"]
 margin_left = 196.0
 margin_right = 320.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[right]3:00[/right]"
 text = "3:00"
 scroll_active = false
 
-[node name="TextureButton" type="TextureButton" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer/VBoxContainer"]
 margin_left = 64.0
 margin_top = 204.0
 margin_right = 256.0
@@ -208,18 +191,181 @@ size_flags_horizontal = 4
 texture_normal = ExtResource( 4 )
 stretch_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer/TextureButton"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer/VBoxContainer/TextureButton"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 182.0
 margin_bottom = 43.0
+mouse_filter = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer/TextureButton/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/1/VBoxContainer/VBoxContainer/TextureButton/MarginContainer"]
 margin_right = 172.0
 margin_bottom = 33.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 1 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Play[/center]"
+text = "Play"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/Levels"]
+margin_left = 346.0
+margin_right = 666.0
+margin_bottom = 418.0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="TabContainer/Events/ScrollContainer/Levels/2"]
+margin_right = 320.0
+margin_bottom = 418.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/2"]
+margin_right = 320.0
+margin_bottom = 418.0
+size_flags_horizontal = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer"]
+margin_right = 320.0
+margin_bottom = 128.0
+size_flags_horizontal = 0
+texture = ExtResource( 8 )
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer"]
+margin_top = 132.0
+margin_right = 320.0
+margin_bottom = 418.0
+rect_min_size = Vector2( 320, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer/VBoxContainer"]
+margin_right = 320.0
+margin_bottom = 64.0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 68.0
+margin_right = 192.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 196.0
+margin_right = 320.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[right]1:30[/right]"
+text = "1:30"
+scroll_active = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer/VBoxContainer"]
+margin_top = 68.0
+margin_right = 320.0
+margin_bottom = 132.0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 6 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 68.0
+margin_right = 192.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 196.0
+margin_right = 320.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[right]2:00[/right]"
+text = "2:00"
+scroll_active = false
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer/VBoxContainer"]
+margin_top = 136.0
+margin_right = 320.0
+margin_bottom = 200.0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer/VBoxContainer/HBoxContainer3"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 7 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 68.0
+margin_right = 192.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 196.0
+margin_right = 320.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[right]3:00[/right]"
+text = "3:00"
+scroll_active = false
+
+[node name="TextureButton" type="TextureButton" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer/VBoxContainer"]
+margin_left = 64.0
+margin_top = 204.0
+margin_right = 256.0
+margin_bottom = 252.0
+size_flags_horizontal = 4
+texture_normal = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer/VBoxContainer/TextureButton"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 182.0
+margin_bottom = 43.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/2/VBoxContainer/VBoxContainer/TextureButton/MarginContainer"]
+margin_right = 172.0
+margin_bottom = 33.0
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 1 )

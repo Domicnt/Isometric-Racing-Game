@@ -16,11 +16,11 @@ animations = [ {
 
 [node name="Node2D" type="Node2D"]
 
-[node name="RigidBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( -1.25992, -192.768 )
+[node name="Car" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -192 )
 
 [node name="TileMap" parent="." instance=ExtResource( 2 )]
-tile_data = PoolIntArray( -131075, 5, 0, -131074, 1, 0, -131073, 2, 0, -65539, 4, 0, -65537, 4, 0, -3, 4, 0, -1, 4, 0, 65533, 4, 0, 65535, 3, 0, 0, 1, 0, 1, 2, 0, 131069, 4, 0, 65537, 4, 0, 196605, 3, 0, 196606, 1, 0, 196607, 1, 0, 131072, 1, 0, 131073, 0, 0 )
+tile_data = PoolIntArray( -131075, 5, 0, -131074, 1, 0, -131073, 2, 0, -65539, 3, 0, -65538, 2, 0, -65537, 4, 0, -2, 4, 0, -1, 4, 0, 65534, 4, 0, 65535, 3, 0, 0, 1, 0, 1, 2, 0, 131070, 4, 0, 65537, 4, 0, 196606, 3, 0, 196607, 1, 0, 131072, 1, 0, 131073, 0, 0 )
 
 [node name="Sprite" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, -192 )
@@ -29,10 +29,10 @@ position = Vector2( 0, -192 )
 position = Vector2( 481.629, -236.652 )
 
 [node name="Sprite2" parent="Sprite" instance=ExtResource( 5 )]
-position = Vector2( -462.946, -526.532 )
+position = Vector2( -101.019, -332.869 )
 
 [node name="Sprite3" parent="Sprite" instance=ExtResource( 5 )]
-position = Vector2( -1230.96, -132.598 )
+position = Vector2( -1059.52, 140.435 )
 
 [node name="Sprite4" parent="Sprite" instance=ExtResource( 5 )]
 position = Vector2( -189.021, 863.473 )
@@ -53,7 +53,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Sprite/PopupPanel"]
-position = Vector2( 4, 4 )
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite/PopupPanel"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 4.0
+margin_bottom = 8.00002
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Sprite/PopupPanel/VBoxContainer"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Sprite/PopupPanel/VBoxContainer/HBoxContainer"]
 z_index = 10
 frames = SubResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite/PopupPanel/VBoxContainer/HBoxContainer"]
+text = "Default Text"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite/PopupPanel/VBoxContainer"]
+margin_top = 4.0
+margin_bottom = 4.0
+text = "Default Text"

@@ -1,7 +1,7 @@
 extends Area2D
 
 onready var popup_node = get_node("PopupPanel");
-onready var car = get_node("../Car");
+onready var car = get_node("../RigidBody2D");
 
 var checkpoints = Array();
 var checkpoints_passed = Array();

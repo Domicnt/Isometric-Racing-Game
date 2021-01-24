@@ -8,6 +8,7 @@ const max_wheel_angle = 5;
 const traction = .9;
 
 onready var sprite = get_node("Car");
+
 func change_sprite():
 	sprite.rotation = -rotation;
 	var angle = ceil(fposmod(rotation*180/PI + 180 + 22.5, 360) / 45);
