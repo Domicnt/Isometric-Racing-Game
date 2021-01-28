@@ -1,5 +1,18 @@
 extends MarginContainer
 
+onready var forwards = get_node("HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer/Forwards/MarginContainer/RichTextLabel");
+onready var backwards = get_node("HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer2/Backwards/MarginContainer/RichTextLabel")
+onready var left = get_node("HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/Left/MarginContainer/RichTextLabel");
+onready var right = get_node("HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer4/Right/MarginContainer/RichTextLabel");
+onready var brake = get_node("HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer5/Brake/MarginContainer/RichTextLabel");
+
+func set_bindings_text():
+	forwards.bbcode_text = "[center]" + InputMap.get_action_list("forwards")[0].as_text() + "[/center]";
+	backwards.bbcode_text = "[center]" + InputMap.get_action_list("backwards")[0].as_text() + "[/center]";
+	left.bbcode_text = "[center]" + InputMap.get_action_list("left")[0].as_text() + "[/center]";
+	right.bbcode_text = "[center]" + InputMap.get_action_list("right")[0].as_text() + "[/center]";
+	brake.bbcode_text = "[center]" + InputMap.get_action_list("brake")[0].as_text() + "[/center]";
+
 func _ready():
 	var resolution = get_node("HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Resolution");
 	resolution.add_item("1920x1080");
@@ -10,69 +23,45 @@ func _ready():
 	displayMode.add_item("Windowed");
 	displayMode.add_item("Borderless");
 	displayMode.add_item("Fullscreen");
-	pass;
+	
+	set_bindings_text();
 
 # Drop down menus
 func _on_Resolution_item_selected(index):
-	match index:
-		0:
-			#1920x1080
-			OS.set_window_size(Vector2(1920, 1080));
-		1:
-			#1280x720
-			OS.set_window_size(Vector2(1280, 720));
-		2:
-			#852x480
-			OS.set_window_size(Vector2(852, 480));
+	Global.change_resolution(index);
 
 func _on_DisplayMode_item_selected(index):
-	match index:
-		0: 
-			#windowed
-			OS.window_fullscreen = false;
-			OS.window_borderless = false;
-			OS.window_maximized = false;
-		1:
-			#borderless windowed
-			OS.window_fullscreen = false;
-			OS.window_borderless = true;
-			OS.window_maximized = true;
-		2:
-			#fullscreen
-			OS.window_fullscreen = true;
-			OS.window_borderless = false;
-			OS.window_maximized = false;
+	Global.change_display_mode(index);
 
 
 # Volume slider
 func _on_HSlider_value_changed(value):
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
+	Global.change_volume(value);
 
 
 func _record_and_change(node, event):
 	node.bbcode_text = "[center]Record New[/center]";
-	if !InputMap.get_action_list(event).empty():
-		InputMap.action_erase_event(event, InputMap.get_action_list(event)[0]);
-		
+	
 	var key = yield(Global, "pressed");
-	InputMap.action_add_event(event, key);
-	node.bbcode_text = "[center]" + OS.get_scancode_string(key.scancode) + "[/center]";
+	Global.change_keybind(event, key);
+	
+	set_bindings_text();
 
 # Keybinds
 func _on_Forwards_pressed():
-	_record_and_change(get_node("HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer/Forwards/MarginContainer/RichTextLabel"), "forwards");
+	_record_and_change(forwards, "forwards");
 
 func _on_Backwards_pressed():
-	_record_and_change(get_node("HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer2/Backwards/MarginContainer/RichTextLabel"), "backwards");
+	_record_and_change(backwards, "backwards");
 
 func _on_Left_pressed():
-	_record_and_change(get_node("HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/Left/MarginContainer/RichTextLabel"), "left");
+	_record_and_change(left, "left");
 
 func _on_Right_pressed():
-	_record_and_change(get_node("HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer4/Right/MarginContainer/RichTextLabel"), "right");
+	_record_and_change(right, "right");
 
 func _on_Brake_pressed():
-	_record_and_change(get_node("HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer5/Brake/MarginContainer/RichTextLabel"), "brake");
+	_record_and_change(brake, "brake");
 
 
 func _on_Back_pressed():

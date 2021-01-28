@@ -13,11 +13,10 @@ extra_spacing_char = 4
 font_data = ExtResource( 3 )
 
 [node name="Pause Menu" type="Popup"]
-visible = true
 margin_left = -448.0
 margin_top = -252.0
-margin_right = 448.0
-margin_bottom = 252.0
+margin_right = 404.0
+margin_bottom = 228.0
 script = ExtResource( 4 )
 
 [node name="Control" type="Control" parent="."]

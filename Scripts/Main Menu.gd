@@ -4,7 +4,6 @@ onready var save_menu = get_node("CenterContainer/PopupMenu");
 onready var credits = get_node("HBoxContainer/VBoxContainer/Credits/Sprite");
 
 func _on_Continue_pressed():
-	print("hi");
 	Global.goto_scene("res://Scenes/Main Menu 2.tscn");
 
 func _on_New_Game_pressed():
