@@ -87,13 +87,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="New Game" type="TextureButton" parent="Main Menu/HBoxContainer/VBoxContainer"]
+[node name="Load File" type="TextureButton" parent="Main Menu/HBoxContainer/VBoxContainer"]
 margin_top = 122.0
 margin_right = 192.0
 margin_bottom = 170.0
 texture_normal = ExtResource( 2 )
 
-[node name="MarginContainer2" type="MarginContainer" parent="Main Menu/HBoxContainer/VBoxContainer/New Game"]
+[node name="MarginContainer2" type="MarginContainer" parent="Main Menu/HBoxContainer/VBoxContainer/Load File"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 182.0
@@ -103,15 +103,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/HBoxContainer/VBoxContainer/New Game/MarginContainer2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/HBoxContainer/VBoxContainer/Load File/MarginContainer2"]
 margin_right = 172.0
 margin_bottom = 33.0
 mouse_filter = 1
 custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
-bbcode_text = "[center]new game[/center]"
-text = "new game"
+bbcode_text = "[center]Load File[/center]"
+text = "Load File"
 fit_content_height = true
 scroll_active = false
 __meta__ = {
@@ -414,7 +414,7 @@ text = "File 5"
 fit_content_height = true
 scroll_active = false
 [connection signal="pressed" from="Main Menu/HBoxContainer/VBoxContainer/Continue" to="Main Menu" method="_on_Continue_pressed"]
-[connection signal="pressed" from="Main Menu/HBoxContainer/VBoxContainer/New Game" to="Main Menu" method="_on_New_Game_pressed"]
+[connection signal="pressed" from="Main Menu/HBoxContainer/VBoxContainer/Load File" to="Main Menu" method="_on_New_Game_pressed"]
 [connection signal="pressed" from="Main Menu/HBoxContainer/VBoxContainer/Options" to="Main Menu" method="_on_Options_pressed"]
 [connection signal="pressed" from="Main Menu/HBoxContainer/VBoxContainer/Credits" to="Main Menu" method="_on_Credits_pressed"]
 [connection signal="pressed" from="Main Menu/HBoxContainer/VBoxContainer/Exit" to="Main Menu" method="_on_Exit_pressed"]

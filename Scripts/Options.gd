@@ -1,5 +1,9 @@
 extends MarginContainer
 
+onready var resolution = get_node("HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Resolution");
+onready var displayMode = get_node("HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/DisplayMode");
+onready var volume = get_node("HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/HSlider");
+
 onready var forwards = get_node("HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer/Forwards/MarginContainer/RichTextLabel");
 onready var backwards = get_node("HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer2/Backwards/MarginContainer/RichTextLabel")
 onready var left = get_node("HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer3/Left/MarginContainer/RichTextLabel");
@@ -14,36 +18,36 @@ func set_bindings_text():
 	brake.bbcode_text = "[center]" + InputMap.get_action_list("brake")[0].as_text() + "[/center]";
 
 func _ready():
-	var resolution = get_node("HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Resolution");
 	resolution.add_item("1920x1080");
 	resolution.add_item("1280x720");
 	resolution.add_item("852x480");
+	resolution.select(Global.get_resolution());
 	
-	var displayMode = get_node("HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/DisplayMode")
 	displayMode.add_item("Windowed");
 	displayMode.add_item("Borderless");
 	displayMode.add_item("Fullscreen");
+	displayMode.select(Global.get_display_mode());
+	
+	volume.value = Global.get_volume();
 	
 	set_bindings_text();
 
 # Drop down menus
 func _on_Resolution_item_selected(index):
-	Global.change_resolution(index);
+	Global.set_resolution(index);
 
 func _on_DisplayMode_item_selected(index):
-	Global.change_display_mode(index);
-
+	Global.set_display_mode(index);
 
 # Volume slider
 func _on_HSlider_value_changed(value):
-	Global.change_volume(value);
-
+	Global.set_volume(value);
 
 func _record_and_change(node, event):
 	node.bbcode_text = "[center]Record New[/center]";
 	
 	var key = yield(Global, "pressed");
-	Global.change_keybind(event, key);
+	Global.set_keybind(event, key);
 	
 	set_bindings_text();
 

@@ -3,9 +3,13 @@ extends Node
 var current_scene = null;
 
 var config = ConfigFile.new();
-var err = config.load("res://settings.cfg");
+var err = config.load("user://settings.cfg");
 
-func change_resolution (res):
+var save = File.new();
+
+func get_resolution ():
+	return config.get_value("display", "resolution");
+func set_resolution (res):
 	match res:
 		0:
 			#1920x1080
@@ -17,9 +21,11 @@ func change_resolution (res):
 			#852x480
 			OS.set_window_size(Vector2(852, 480));
 	config.set_value("display", "resolution", res);
-	config.save("res://settings.cfg");
+	config.save("user://settings.cfg");
 
-func change_display_mode(mode):
+func get_display_mode():
+	return config.get_value("display", "mode");
+func set_display_mode(mode):
 	match mode:
 		0: 
 			#windowed
@@ -37,19 +43,23 @@ func change_display_mode(mode):
 			OS.window_borderless = false;
 			OS.window_maximized = false;
 	config.set_value("display", "mode", mode);
-	config.save("res://settings.cfg");
+	config.save("user://settings.cfg");
 
-func change_volume(volume):
+func get_volume():
+	return AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"));
+func set_volume(volume):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume);
 	config.set_value("audio", "volume", volume);
-	config.save("res://settings.cfg");
+	config.save("user://settings.cfg");
 
-func change_keybind(event, key):
+func get_keybind(event, key):
+	return config.get_value("controls", event, key);
+func set_keybind(event, key):
 	if !InputMap.get_action_list(event).empty():
 		InputMap.action_erase_event(event, InputMap.get_action_list(event)[0]);
 	InputMap.action_add_event(event, key);
 	config.set_value("controls", event, key);
-	config.save("res://settings.cfg");
+	config.save("user://settings.cfg");
 
 func _ready():
 	var root = get_tree().get_root();
@@ -76,17 +86,19 @@ func _ready():
 		config.set_value("controls", "brake", space);
 	
 	#resolution
-	change_resolution(config.get_value("display", "resolution"));
+	set_resolution(config.get_value("display", "resolution"));
 	#display mode
-	change_display_mode(config.get_value("display", "mode"));
+	set_display_mode(config.get_value("display", "mode"));
+	#volume
+	set_volume(config.get_value("audio", "volume"));
 	#key bindings
-	change_keybind("forwards", config.get_value("controls", "forwards"));
-	change_keybind("backwards", config.get_value("controls", "backwards"));
-	change_keybind("left", config.get_value("controls", "left"));
-	change_keybind("right", config.get_value("controls", "right"));
-	change_keybind("brake", config.get_value("controls", "brake"));
+	set_keybind("forwards", config.get_value("controls", "forwards"));
+	set_keybind("backwards", config.get_value("controls", "backwards"));
+	set_keybind("left", config.get_value("controls", "left"));
+	set_keybind("right", config.get_value("controls", "right"));
+	set_keybind("brake", config.get_value("controls", "brake"));
 
-	config.save("res://settings.cfg");
+	config.save("user://settings.cfg");
 
 func goto_scene(path):
 	call_deferred("_deferred_goto_scene", path);
