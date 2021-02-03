@@ -6,6 +6,14 @@ var config = ConfigFile.new();
 var err = config.load("user://settings.cfg");
 
 var save = File.new();
+func save_file(file):
+	pass;
+func load_file(file):
+	pass;
+
+var money = 0;
+var track = 0;
+var level_times = [0];
 
 func get_resolution ():
 	return config.get_value("display", "resolution");
