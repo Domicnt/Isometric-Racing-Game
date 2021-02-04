@@ -24,4 +24,5 @@ func _on_Restart_pressed():
 
 
 func _on_Exit_pressed():
+	get_tree().paused = false;
 	Global.goto_scene("res://Scenes/Main Menu 2.tscn");

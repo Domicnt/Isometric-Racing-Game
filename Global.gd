@@ -12,7 +12,7 @@ func load_file(file):
 	pass;
 
 var money = 0;
-var track = 0;
+var level = 0;
 var level_times = [0];
 
 func get_resolution ():

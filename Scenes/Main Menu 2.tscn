@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://menufont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scripts/Level Select.gd" type="Script" id=2]
@@ -7,12 +7,13 @@
 [ext_resource path="res://Sprites/Menu/Gold.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/Menu/Silver.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/Menu/Bronze.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Menu/track_lock.png" type="Texture" id=8]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 48
 font_data = ExtResource( 3 )
 
@@ -30,7 +31,7 @@ __meta__ = {
 
 [node name="TabContainer" type="TabContainer" parent="."]
 margin_right = 836.0
-margin_bottom = 450.0
+margin_bottom = 448.0
 custom_fonts/font = ExtResource( 1 )
 tab_align = 0
 
@@ -44,12 +45,12 @@ margin_bottom = -4.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Events"]
 margin_right = 828.0
-margin_bottom = 396.0
+margin_bottom = 394.0
 scroll_vertical_enabled = false
 
 [node name="Levels" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer"]
-margin_right = 828.0
-margin_bottom = 396.0
+margin_right = 952.0
+margin_bottom = 382.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 26
@@ -59,14 +60,26 @@ __meta__ = {
 
 [node name="1" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/Levels"]
 margin_right = 300.0
-margin_bottom = 396.0
+margin_bottom = 382.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="TabContainer/Events/ScrollContainer/Levels/1"]
 margin_right = 300.0
-margin_bottom = 396.0
+margin_bottom = 382.0
+
+[node name="CenterContainer" type="CenterContainer" parent="TabContainer/Events/ScrollContainer/Levels/1/Panel"]
+margin_right = 300.0
+margin_bottom = 394.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="TabContainer/Events/ScrollContainer/Levels/1/Panel/CenterContainer"]
+z_index = 5
+texture = ExtResource( 8 )
+centered = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/1/Panel"]
 margin_right = 300.0
@@ -79,15 +92,14 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/Levels/1/Panel/VBoxContainer"]
-margin_top = 10.0
 margin_right = 300.0
 margin_bottom = 140.0
 size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/1/Panel/VBoxContainer/MarginContainer"]
 margin_right = 300.0
-margin_bottom = 130.0
-custom_fonts/normal_font = SubResource( 2 )
+margin_bottom = 140.0
+custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 bbcode_enabled = true
 bbcode_text = "[center]Beginner's Raceway[/center]"
@@ -111,7 +123,7 @@ margin_right = 182.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
 text = "Gold"
 scroll_active = false
 
@@ -121,7 +133,7 @@ margin_right = 300.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[right]1:30[/right]"
 text = "1:30"
@@ -143,7 +155,7 @@ margin_right = 182.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
 text = "Silver"
 scroll_active = false
 
@@ -153,7 +165,7 @@ margin_right = 300.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[right]2:00[/right]"
 text = "2:00"
@@ -175,7 +187,7 @@ margin_right = 182.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
 text = "Bronze"
 scroll_active = false
 
@@ -185,7 +197,7 @@ margin_right = 300.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[right]3:00[/right]"
 text = "3:00"
@@ -211,6 +223,362 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/1/Panel/VBoxContainer/TextureButton/MarginContainer"]
+margin_right = 172.0
+margin_bottom = 33.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 1 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Play[/center]"
+text = "Play"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/Levels"]
+margin_left = 326.0
+margin_right = 626.0
+margin_bottom = 382.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="TabContainer/Events/ScrollContainer/Levels/2"]
+margin_right = 300.0
+margin_bottom = 382.0
+
+[node name="CenterContainer" type="CenterContainer" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel"]
+margin_right = 300.0
+margin_bottom = 394.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/CenterContainer"]
+z_index = 5
+texture = ExtResource( 8 )
+centered = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel"]
+margin_right = 300.0
+margin_bottom = 396.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 140.0
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer/MarginContainer"]
+margin_right = 300.0
+margin_bottom = 140.0
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Beginner's Raceway[/center]"
+text = "Beginner's Raceway"
+fit_content_height = true
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer"]
+margin_top = 144.0
+margin_right = 300.0
+margin_bottom = 208.0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer/HBoxContainer"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 68.0
+margin_right = 182.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 186.0
+margin_right = 300.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[right]1:30[/right]"
+text = "1:30"
+scroll_active = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer"]
+margin_top = 212.0
+margin_right = 300.0
+margin_bottom = 276.0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer/HBoxContainer2"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 6 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer/HBoxContainer2"]
+margin_left = 68.0
+margin_right = 182.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer/HBoxContainer2"]
+margin_left = 186.0
+margin_right = 300.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[right]2:00[/right]"
+text = "2:00"
+scroll_active = false
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer"]
+margin_top = 280.0
+margin_right = 300.0
+margin_bottom = 344.0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer/HBoxContainer3"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 7 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer/HBoxContainer3"]
+margin_left = 68.0
+margin_right = 182.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer/HBoxContainer3"]
+margin_left = 186.0
+margin_right = 300.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[right]3:00[/right]"
+text = "3:00"
+scroll_active = false
+
+[node name="TextureButton" type="TextureButton" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer"]
+margin_left = 54.0
+margin_top = 348.0
+margin_right = 246.0
+margin_bottom = 396.0
+size_flags_horizontal = 4
+texture_normal = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer/TextureButton"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 182.0
+margin_bottom = 43.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/2/Panel/VBoxContainer/TextureButton/MarginContainer"]
+margin_right = 172.0
+margin_bottom = 33.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 1 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Play[/center]"
+text = "Play"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/Levels"]
+margin_left = 652.0
+margin_right = 952.0
+margin_bottom = 382.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="TabContainer/Events/ScrollContainer/Levels/3"]
+margin_right = 300.0
+margin_bottom = 382.0
+
+[node name="CenterContainer" type="CenterContainer" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel"]
+margin_right = 300.0
+margin_bottom = 394.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/CenterContainer"]
+z_index = 5
+texture = ExtResource( 8 )
+centered = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel"]
+margin_right = 300.0
+margin_bottom = 396.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 140.0
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer/MarginContainer"]
+margin_right = 300.0
+margin_bottom = 140.0
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Beginner's Raceway[/center]"
+text = "Beginner's Raceway"
+fit_content_height = true
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer"]
+margin_top = 144.0
+margin_right = 300.0
+margin_bottom = 208.0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer/HBoxContainer"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 68.0
+margin_right = 182.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 186.0
+margin_right = 300.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[right]1:30[/right]"
+text = "1:30"
+scroll_active = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer"]
+margin_top = 212.0
+margin_right = 300.0
+margin_bottom = 276.0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer/HBoxContainer2"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 6 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer/HBoxContainer2"]
+margin_left = 68.0
+margin_right = 182.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer/HBoxContainer2"]
+margin_left = 186.0
+margin_right = 300.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[right]2:00[/right]"
+text = "2:00"
+scroll_active = false
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer"]
+margin_top = 280.0
+margin_right = 300.0
+margin_bottom = 344.0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer/HBoxContainer3"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 7 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer/HBoxContainer3"]
+margin_left = 68.0
+margin_right = 182.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer/HBoxContainer3"]
+margin_left = 186.0
+margin_right = 300.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[right]3:00[/right]"
+text = "3:00"
+scroll_active = false
+
+[node name="TextureButton" type="TextureButton" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer"]
+margin_left = 54.0
+margin_top = 348.0
+margin_right = 246.0
+margin_bottom = 396.0
+size_flags_horizontal = 4
+texture_normal = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer/TextureButton"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 182.0
+margin_bottom = 43.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Events/ScrollContainer/Levels/3/Panel/VBoxContainer/TextureButton/MarginContainer"]
 margin_right = 172.0
 margin_bottom = 33.0
 mouse_filter = 1
