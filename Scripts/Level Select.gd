@@ -13,3 +13,7 @@ func _ready():
 func _on_level_select(i):
 	if (i <= Global.level):
 		Global.goto_scene("res://Scenes/Levels/" + str(i+1) + ".tscn");
+
+
+func _on_TextureButton_pressed():
+	Global.goto_scene("res://Scenes/Main Menu.tscn");
