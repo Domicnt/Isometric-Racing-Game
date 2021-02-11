@@ -99,6 +99,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="TabContainer/Events/ScrollContainer/Levels/1/Panel/CenterContainer"]
+visible = false
 z_index = 5
 texture = ExtResource( 8 )
 centered = false

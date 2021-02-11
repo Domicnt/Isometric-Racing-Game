@@ -21,7 +21,7 @@ animations = [ {
 position = Vector2( -1.25992, -192.768 )
 
 [node name="TileMap" parent="." instance=ExtResource( 2 )]
-tile_data = PoolIntArray( -131075, 9, 0, -131074, 7, 0, -131073, 10, 0, -65539, 8, 0, -65537, 8, 0, -3, 8, 0, -1, 8, 0, 65533, 8, 0, 65535, 11, 0, 0, 7, 0, 1, 10, 0, 131069, 8, 0, 65537, 8, 0, 196605, 11, 0, 196606, 7, 0, 196607, 7, 0, 131072, 7, 0, 131073, 6, 0 )
+tile_data = PoolIntArray( -65539, 9, 0, -65538, 7, 0, -65537, 10, 0, -3, 11, 0, -2, 10, 0, -1, 8, 0, 65534, 11, 0, 65535, 6, 0 )
 
 [node name="RigidBody2D" parent="TileMap" instance=ExtResource( 6 )]
 position = Vector2( 113.177, -229.207 )
@@ -30,24 +30,14 @@ position = Vector2( 113.177, -229.207 )
 position = Vector2( 0, -192 )
 
 [node name="Sprite" parent="Sprite" instance=ExtResource( 5 )]
-position = Vector2( 481.629, -236.652 )
+position = Vector2( 50.7361, -347.525 )
+scale = Vector2( -1, 1 )
 
 [node name="Sprite2" parent="Sprite" instance=ExtResource( 5 )]
 position = Vector2( -462.946, -526.532 )
 
 [node name="Sprite3" parent="Sprite" instance=ExtResource( 5 )]
-position = Vector2( -1230.96, -132.598 )
-
-[node name="Sprite4" parent="Sprite" instance=ExtResource( 5 )]
-position = Vector2( -189.021, 863.473 )
-
-[node name="Sprite5" parent="Sprite" instance=ExtResource( 5 )]
-position = Vector2( -1061.9, 623.253 )
-scale = Vector2( -1, 1 )
-
-[node name="Sprite6" parent="Sprite" instance=ExtResource( 5 )]
-position = Vector2( 286.663, -625.414 )
-scale = Vector2( -1, 1 )
+position = Vector2( -570.761, -94.8003 )
 
 [node name="PopupPanel" type="PopupPanel" parent="Sprite"]
 margin_top = -1.52588e-05
