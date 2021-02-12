@@ -4,7 +4,7 @@ onready var popup_node = get_node("CanvasLayer/Post-Race Menu");
 onready var car = get_node("../RigidBody2D");
 
 var time_start = 0
-signal finish;
+signal time;
 
 var checkpoints = Array();
 var checkpoints_passed = Array();
@@ -28,6 +28,6 @@ func _on_Area2D_area_entered(_area):
 			return;
 		else:
 			i = false;
-	emit_signal("finish", OS.get_unix_time() - time_start);
+	emit_signal("time", OS.get_unix_time() - time_start);
 	popup_node.popup();
 	get_tree().paused = true;

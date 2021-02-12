@@ -7,7 +7,6 @@
 
 [node name="Post-Race Menu" type="Popup"]
 pause_mode = 2
-visible = true
 margin_right = 852.0
 margin_bottom = 480.0
 script = ExtResource( 3 )

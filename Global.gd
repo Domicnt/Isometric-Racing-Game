@@ -5,16 +5,6 @@ var current_scene = null;
 var config = ConfigFile.new();
 var err = config.load("user://settings.cfg");
 
-var save = File.new();
-func save_file(file):
-	pass;
-func load_file(file):
-	pass;
-
-var money = 0;
-var level = 0;
-var level_times = [0];
-
 func get_resolution ():
 	return config.get_value("display", "resolution");
 func set_resolution (res):
@@ -68,6 +58,38 @@ func set_keybind(event, key):
 	InputMap.action_add_event(event, key);
 	config.set_value("controls", event, key);
 	config.save("user://settings.cfg");
+
+var money = 0;
+var stage = 1;
+var upgrade = 1;
+var stage_times = [0];
+
+var save = File.new();
+func save_file(file):
+	save.set_value("money", money);
+	save.set_value("stage", stage);
+	save.set_value("upgrade", upgrade);
+	save.set_value("stage_times", stage_times);
+	save.save("user://" + file + ".cfg");
+func load_file(file):
+	var err = save.load("user://" + file + ".cfg");
+	if err != OK:
+		save.set_value("money", money);
+		save.set_value("stage", stage);
+		save.set_value("upgrade", upgrade);
+		save.set_value("stage_times", stage_times);
+	else:
+		money = save.get_value("money");
+		stage = save.get_value("stage");
+		upgrade = save.get_value("upgrade");
+		stage_times = save.get_value("stage_times");
+
+func get_stage_time(stage):
+	return stage_times[stage - 1];
+func set_stage_time(stage, time):
+	while stage_times.size() < stage:
+		stage_times.push_back(null);
+	stage_times[stage - 1] = time;
 
 func _ready():
 	var root = get_tree().get_root();
@@ -123,4 +145,3 @@ signal pressed;
 func _input(event):
 	if event is InputEventKey:
 		emit_signal("pressed", event);
-
